@@ -64,6 +64,8 @@ async def get_tours_day(massage: Message, bot: Bot):
             tours_dict = json.load(file)
             for key in tours_dict: # перебор json словаря                                               
                 newline_char = '\n'
+                price = f"{key['price']}"
+                changed_price = f"{price[:-3]} {price[-3:]}" # отделяем 3 знака в стоимости
                 date_start = key['date_start']
                 date_start = date_start.replace('-', '.')
                 for n, i in enumerate(key['includes'], 0):# переименновываем includes
@@ -115,7 +117,7 @@ async def get_tours_day(massage: Message, bot: Bot):
                                              f"({key['country']}, {key['resort']}){newline_char}{newline_char}"
                                              f"🛫 Вылет из <b>{key['depart_city']} "
                                              f"{date_start[-2:]}.{date_start[-5:-3]}</b> ({key['nights']} ночей){newline_char}"
-                                             f"💷 <b>{key['price']} руб/чел</b> (при 2-ухместном размещении){newline_char}{newline_char}"
+                                             f"💷 <b>{changed_price} руб/чел</b> (при 2-ухместном размещении){newline_char}{newline_char}"
                                              f"<b>В стоимость тура входит:</b>{newline_char}"
                                              f"<i>{newline_char.join(key['includes'])}</i>{newline_char}{newline_char}"
                                              f"<b>📞<a href='tel:+78126705911'>8-(812)-670-59-11</a></b>{newline_char}{newline_char}"
