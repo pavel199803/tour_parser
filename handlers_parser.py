@@ -57,6 +57,7 @@ async def get_tours_day(massage: Message, bot: Bot):
         urllib.request.urlretrieve(url, destination)
         # url = 'https://market-sletat.ru/tours_of_the_day.json'
         # response = requests.get(url)
+        counter = 0
 
         with open('tours_of_the_day.json', encoding='utf-8') as file:  # вызов json словаря
             tours_dict = json.load(file)
@@ -130,7 +131,10 @@ async def get_tours_day(massage: Message, bot: Bot):
                 if late_time <= current:
                     break
                 else:
-                    time.sleep(720)  # задержка 12 мин
+                    counter += 1
+                    if counter == 2:    # условие для того чтобы постил по 2 поста
+                        counter -= counter
+                        time.sleep(720)  # задержка 12 мин
 
         future = current.replace(hour=14, minute=30, second=0, microsecond=0)  # повторный вызов в 14:30 каждого дня
         if future <= current:
