@@ -101,7 +101,7 @@ async def get_tours_day(massage: Message, bot: Bot):
                     url='https://t.me/assistant_market_sletat_bot'
                 )
                 inline_buy = InlineKeyboardButton(
-                    text="Купить Тур",
+                    text="Подробнее",
                     url=f"https://market-sletat.ru/tours-day/{key['id']}"
                 )
                 keyboard = InlineKeyboardMarkup(row_width=2,  # инициализируем инлайн клавиатуру 
