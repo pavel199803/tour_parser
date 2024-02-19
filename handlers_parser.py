@@ -161,7 +161,7 @@ async def get_tours_day(massage: Message, bot: Bot):
                      f"чтобы получить персонализированную подборку туров, составленную специально для вас.</a></b> "
                      f"Не упустите возможность сделать свое следующее путешествие незабываемым!"
             )
-            massage_counter -= 0
+            massage_counter -= 1
         future = current.replace(hour=14, minute=30, second=0, microsecond=0)  # повторный вызов в 14:30 каждого дня
         if future <= current:
             future += timedelta(days=1)
